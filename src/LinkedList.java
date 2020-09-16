@@ -54,7 +54,9 @@ public class LinkedList {
 		headNode = null;
 	}
 
-	/** gets the number of the elements in the list
+	/**
+	 * gets the number of the elements in the list
+	 * 
 	 * @return the size of the list
 	 */
 	public int size() {
@@ -63,7 +65,9 @@ public class LinkedList {
 		return -1;
 	}
 
-	/** Adds an element to the start of the list
+	/**
+	 * Adds an element to the start of the list
+	 * 
 	 * @param i the element added to the start of the list
 	 */
 	public void addAtHead(int i) {
@@ -74,7 +78,9 @@ public class LinkedList {
 
 	}
 
-	/** Adds an element to the end of the list
+	/**
+	 * Adds an element to the end of the list
+	 * 
 	 * @param i the element added to the end of the list
 	 */
 	public void addAtTail(int i) {
@@ -92,7 +98,9 @@ public class LinkedList {
 		}
 	}
 
-	/** Removes the first element from the list
+	/**
+	 * Removes the first element from the list
+	 * 
 	 * @return the element removed from the list
 	 */
 	public int removeAtHead() {
@@ -112,8 +120,9 @@ public class LinkedList {
 		}
 	}
 
-	
-	/** Removes the last element from the list
+	/**
+	 * Removes the last element from the list
+	 * 
 	 * @return the value removed from the list
 	 */
 	public int removeAtTail() {
@@ -132,7 +141,40 @@ public class LinkedList {
 		}
 	}
 
-	/**@param idx the index position of the value
+	/**
+	 * Adds an element to the middle of the list
+	 * 
+	 * @param i the element added to the middle of the list
+	 */
+	public void insertMiddle(int i) {
+		// step 1: create the new node
+		// TODO
+
+		// step 2: find the node immediately prior to the middle node
+		int middle = -1; // TODO
+
+		// step 3: get the tail of the prior node
+		// TODO
+
+		// if the list was empty, set new node as a the head node
+		if (headNode == null) {
+
+		}
+
+		// otherwise if the list was not empty,
+		// set it as tail of the new node
+		else {
+			// set it as tail of the new node
+			// TODO
+
+			// step 4: set the new node as the tail of the prior node
+			// TODO
+		}
+
+	}
+
+	/**
+	 * @param idx the index position of the value
 	 * @return the value in the list at a given index
 	 */
 	public int get(int idx) {
