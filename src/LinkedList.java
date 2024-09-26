@@ -78,10 +78,8 @@ public class LinkedList {
 	public void addAtHead(int i) {
 		Node newNode = new Node(i);
 		// step 1: modify new node's nextNode
-		newNode.setNextNode( headNode );
 
 		// step 2: update what headNode points to
-		headNode = newNode;
 	}
 
 	/**
@@ -111,20 +109,18 @@ public class LinkedList {
 	 */
 	public int removeAtHead() throws LinkedListException {
 		// case 1: empty list
-		if (headNode == null) {
+		if (true /* TODO */) {
 			throw new LinkedListException("Cannot remove from the head of an empty linked list");
 		}
 
 		// case 2: non empty list
 		else {
 			// step 1: get Node to return
-			Node nodeToReturn = headNode;
 
 			// step 2: update headNode value
-			headNode = headNode.getNextNode();
 
 			// step 3: return value of head (one that's removed)
-			return nodeToReturn.getValue();
+			return -1;
 		}
 	}
 
@@ -135,17 +131,17 @@ public class LinkedList {
 	 */
 	public int removeAtTail() throws LinkedListException {
 		// case 1: empty list
-		if (headNode == null) {
+		if (true /* TODO */) {
 			throw new LinkedListException("Cannot remove from the tail of an empty linked list");
 		} else {
 			// step 1: create node to return value of
 			Node returnedNode = new Node(-1);
 
 			// step 2: call removeAtTail(..)
-			headNode = headNode.removeAtTail(returnedNode);
+			headNode = headNode; /* TODO */
 
 			// step 3: return returned node value
-			return returnedNode.getValue(); /* TODO */
+			return -1; /* TODO */
 		}
 	}
 
@@ -196,11 +192,6 @@ public class LinkedList {
 	 */
 	public int lastValue() {
 		// TODO
-		Node currentNode = headNode;
-		while (currentNode != null) {
-			currentNode = currentNode.getNextNode();
-		}
-		
-		return currentNode.getValue();
+		return -1;
 	}
 }
