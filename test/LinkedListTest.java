@@ -149,5 +149,15 @@ public class LinkedListTest {
 		assertEquals(6, list.get(2));
 		assertEquals(7, list.get(3));
 	}
+	
+	@Test(expected=LinkedListException.class)
+	public void testRemoveAtHeadEmpty() {
+		list.removeAtHead();
+	}
+	
+	@Test(expected=LinkedListException.class)
+	public void testRemoveAtTailEmpty() {
+		list.removeAtTail();
+	}
 
 }

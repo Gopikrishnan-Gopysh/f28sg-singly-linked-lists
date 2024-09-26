@@ -1,3 +1,8 @@
+class LinkedListException extends RuntimeException{    
+	public LinkedListException(String err) {
+		super(err);
+	}
+}
 
 public class LinkedList {
 	private class Node {
@@ -73,9 +78,10 @@ public class LinkedList {
 	public void addAtHead(int i) {
 		Node newNode = new Node(i);
 		// step 1: modify new node's nextNode
+		newNode.setNextNode( headNode );
 
 		// step 2: update what headNode points to
-
+		headNode = newNode;
 	}
 
 	/**
@@ -103,20 +109,22 @@ public class LinkedList {
 	 * 
 	 * @return the element removed from the list
 	 */
-	public int removeAtHead() {
+	public int removeAtHead() throws LinkedListException {
 		// case 1: empty list
-		if (true /* TODO */) {
-			return -1;
+		if (headNode == null) {
+			throw new LinkedListException("Cannot remove from the head of an empty linked list");
 		}
 
 		// case 2: non empty list
 		else {
 			// step 1: get Node to return
+			Node nodeToReturn = headNode;
 
 			// step 2: update headNode value
+			headNode = headNode.getNextNode();
 
 			// step 3: return value of head (one that's removed)
-			return -1 /* TODO */;
+			return nodeToReturn.getValue();
 		}
 	}
 
@@ -125,19 +133,19 @@ public class LinkedList {
 	 * 
 	 * @return the value removed from the list
 	 */
-	public int removeAtTail() {
+	public int removeAtTail() throws LinkedListException {
 		// case 1: empty list
-		if (true /* TODO */) {
-			return -1;
+		if (headNode == null) {
+			throw new LinkedListException("Cannot remove from the tail of an empty linked list");
 		} else {
 			// step 1: create node to return value of
 			Node returnedNode = new Node(-1);
 
 			// step 2: call removeAtTail(..)
-			headNode = headNode; /* TODO */
+			headNode = headNode.removeAtTail(returnedNode);
 
 			// step 3: return returned node value
-			return -1; /* TODO */
+			return returnedNode.getValue(); /* TODO */
 		}
 	}
 
@@ -188,7 +196,11 @@ public class LinkedList {
 	 */
 	public int lastValue() {
 		// TODO
-
-		return -1;
+		Node currentNode = headNode;
+		while (currentNode != null) {
+			currentNode = currentNode.getNextNode();
+		}
+		
+		return currentNode.getValue();
 	}
 }
