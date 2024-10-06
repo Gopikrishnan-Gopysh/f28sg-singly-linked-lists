@@ -3,7 +3,7 @@ class LinkedListException extends RuntimeException{
 		super(err);
 	}
 }
-
+//testing
 public class LinkedList {
 	private class Node {
 		private int value;
