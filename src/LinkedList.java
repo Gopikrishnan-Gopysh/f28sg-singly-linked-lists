@@ -65,10 +65,15 @@ public class LinkedList {
 	 * @return the size of the list
 	 */
 	public int size() {
-		// TODO
+		    int count = 0;
+		    Node current = headNode;
+		    while (current != null) {
+		        count++;
+		        current = current.getNextNode();
+		    }
+		    return count;
+		}
 
-		return -1;
-	}
 
 	/**
 	 * Adds an element to the start of the list
