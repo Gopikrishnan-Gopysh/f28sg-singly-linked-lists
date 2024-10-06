@@ -82,9 +82,8 @@ public class LinkedList {
 	 */
 	public void addAtHead(int i) {
 		Node newNode = new Node(i);
-		// step 1: modify new node's nextNode
-
-		// step 2: update what headNode points to
+		 newNode.setNextNode(headNode); //newNode points to current head
+		    headNode = newNode; //headNode now points to newNode
 	}
 
 	/**
@@ -94,16 +93,12 @@ public class LinkedList {
 	 */
 	public void addAtTail(int i) {
 		Node newNode = new Node(i);
-		// case 1: adding to empty list
 		if (headNode == null) {
-			// step 1: update what headNode points to
+			 headNode = newNode; //for Empty list
 
 		}
-		// case 2: adding to non empty list
 		else {
-			// step 2: traverse list recursively to add node at tail
-			// (hint: addNodeAtTail(..)
-
+			 headNode.addNodeAtTail(newNode); //for Non-empty list 
 		}
 	}
 
@@ -114,18 +109,15 @@ public class LinkedList {
 	 */
 	public int removeAtHead() throws LinkedListException {
 		// case 1: empty list
-		if (true /* TODO */) {
+		if (headNode == null) {
 			throw new LinkedListException("Cannot remove from the head of an empty linked list");
 		}
 
 		// case 2: non empty list
 		else {
-			// step 1: get Node to return
-
-			// step 2: update headNode value
-
-			// step 3: return value of head (one that's removed)
-			return -1;
+			int value = headNode.getValue(); //Get value of head node
+		    headNode = headNode.getNextNode(); //update headNode to point to the next node
+		    return value; //return the removed value
 		}
 	}
 
