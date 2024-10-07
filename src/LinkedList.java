@@ -65,14 +65,14 @@ public class LinkedList {
 	 * @return the size of the list
 	 */
 	public int size() {
-		    int count = 0;
-		    Node current = headNode;
-		    while (current != null) {
-		        count++;
-		        current = current.getNextNode();
-		    }
-		    return count;
+		int count = 0;
+		Node current = headNode;
+		while (current != null) {
+			count++;
+			current = current.getNextNode();
 		}
+		return count;
+	}
 
 
 	/**
@@ -82,8 +82,8 @@ public class LinkedList {
 	 */
 	public void addAtHead(int i) {
 		Node newNode = new Node(i);
-		 newNode.setNextNode(headNode); //newNode points to current head
-		    headNode = newNode; //headNode now points to newNode
+		newNode.setNextNode(headNode); //newNode points to current head
+		headNode = newNode; //headNode now points to newNode
 	}
 
 	/**
@@ -94,11 +94,11 @@ public class LinkedList {
 	public void addAtTail(int i) {
 		Node newNode = new Node(i);
 		if (headNode == null) {
-			 headNode = newNode; //for Empty list
+			headNode = newNode; //for Empty list
 
 		}
 		else {
-			 headNode.addNodeAtTail(newNode); //for Non-empty list 
+			headNode.addNodeAtTail(newNode); //for Non-empty list 
 		}
 	}
 
@@ -116,8 +116,8 @@ public class LinkedList {
 		// case 2: non empty list
 		else {
 			int value = headNode.getValue(); //Get value of head node
-		    headNode = headNode.getNextNode(); //update headNode to point to the next node
-		    return value; //return the removed value
+			headNode = headNode.getNextNode(); //update headNode to point to the next node
+			return value; //return the removed value
 		}
 	}
 
@@ -128,17 +128,17 @@ public class LinkedList {
 	 */
 	public int removeAtTail() throws LinkedListException {
 		// case 1: empty list
-		if (true /* TODO */) {
+		if (headNode == null) {
 			throw new LinkedListException("Cannot remove from the tail of an empty linked list");
 		} else {
-			// step 1: create node to return value of
-			Node returnedNode = new Node(-1);
-
-			// step 2: call removeAtTail(..)
-			headNode = headNode; /* TODO */
-
-			// step 3: return returned node value
-			return -1; /* TODO */
+			Node returnedNode = new Node(-1); //node to return value of
+			if (headNode.getNextNode() == null) { //for single node in the list
+				returnedNode.setValue(headNode.getValue());
+				headNode = null;
+			} else {
+				headNode = headNode.removeAtTail(returnedNode); //recursive removal
+			}
+			return returnedNode.getValue(); //Return the value of the removed node
 		}
 	}
 
@@ -149,29 +149,23 @@ public class LinkedList {
 	 */
 	public void insertMiddle(int i) {
 		// step 1: create the new node
-		// TODO
+		Node newNode = new Node(i);
 
-		// step 2: find the node immediately prior to the middle node
-		int middle = -1; // TODO
-
-		// step 3: get the tail of the prior node
-		// TODO
-
-		// if the list was empty, set new node as a the head node
+		//step 2: If the list is empty, set new node as the head node
 		if (headNode == null) {
-
+			headNode = newNode;
+			return;
 		}
 
-		// otherwise if the list was not empty,
-		// set it as tail of the new node
-		else {
-			// set it as tail of the new node
-			// TODO
-
-			// step 4: set the new node as the tail of the prior node
-			// TODO
+		//step 3: Find the middle position of the list
+		int mid = size() / 2;
+		Node current = headNode;
+		for (int j = 0; j < mid - 1; j++) {
+			current = current.getNextNode();
 		}
-
+		//step 4: Insert the new node at the middle position
+		newNode.setNextNode(current.getNextNode());
+		current.setNextNode(newNode);
 	}
 
 	/**
@@ -179,16 +173,27 @@ public class LinkedList {
 	 * @return the value in the list at a given index
 	 */
 	public int get(int idx) {
-		// TODO
-
-		return -1;
+		if (idx < 0 || idx >= size()) {
+			return -1;  //out of bounds
+		}
+		Node current = headNode;
+		for (int i = 0; i < idx; i++) {
+			current = current.getNextNode();
+		}
+		return current.getValue();
 	}
 
 	/**
 	 * @return the last value in the list, returns -1 when the list is empty.
 	 */
 	public int lastValue() {
-		// TODO
-		return -1;
+		if (headNode == null) {
+			return -1; //empty list
+		}
+		Node current = headNode;
+		while (current.getNextNode() != null) {
+			current = current.getNextNode();
+		}
+		return current.getValue(); //return value of last node
 	}
 }
